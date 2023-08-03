@@ -32,7 +32,7 @@ import { SignupComponent } from './signup/signup.component';
       { path: 'fetch-data', component: FetchDataComponent },
       {path:'login', component:LoginComponent},
       {path:'home', component:HomeComponent},
-      {path:'Signup', component:SignupComponent}
+      {path:'signup', component:SignupComponent}
     ])
   ],
   providers: [],

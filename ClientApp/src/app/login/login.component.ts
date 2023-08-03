@@ -14,4 +14,7 @@ validateInput(){
   this.authService.login();
   this.router.navigate(['/home']);
 }
+sendToSignup(){
+  this.router.navigate(['/signup']);
+}
 }

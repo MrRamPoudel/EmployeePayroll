@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private authService: AuthService, private router: Router){}
+ /*
   ngOnInit(){
     if(this.authService.isUserLoggedIn()){
       this.router.navigate(['/home']);
@@ -16,5 +17,6 @@ export class AppComponent {
       this.router.navigate(['/login']);
     }
   }
+  */
   title = 'app';
 }
