@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CounterComponent,
     FetchDataComponent,
     LoginComponent,
-    SignupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,7 +33,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       { path: 'fetch-data', component: FetchDataComponent },
       {path:'login', component:LoginComponent},
       {path:'home', component:HomeComponent},
-      {path:'signup', component:SignupComponent}
     ])
   ],
   providers: [],
