@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import ValidateForm from '../common/validateForm';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,5 +28,13 @@ private isLoggedIn = false;
       username:['', Validators.required],
       password:['', Validators.required]
     })
+  }
+  handleLogIn(){
+    if(this.loginForm.valid){
+      //@TODO add logic for form handling the login
+    }
+    else{
+      ValidateForm.validateAllFields(this.loginForm);
+    }
   }
 }
