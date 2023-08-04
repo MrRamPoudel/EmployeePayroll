@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -19,6 +19,26 @@ export class SignupComponent {
       city:['', Validators.required],
       state:['', Validators.required],
       zipcode:['', Validators.required]
+    })
+  }
+  handleSignUp(){
+    if(this.signupForm.valid){
+      //try inserting
+    }
+    else{
+      //throw error
+      this.validateAllFields(this.signupForm);
+    }
+  }
+  private validateAllFields(formGroup:FormGroup){
+    Object.keys(formGroup.controls).forEach(field =>{
+      const control = formGroup.get(field);
+      if(control instanceof FormControl){
+        control.markAsDirty({onlySelf: true});
+      }
+      else if(control instanceof FormGroup) {
+        this.validateAllFields(control);
+      }
     })
   }
 }

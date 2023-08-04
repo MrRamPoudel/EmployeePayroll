@@ -51,7 +51,7 @@
         <small class="block text-red-600" *ngIf="signupForm.controls['zipcode'].dirty && signupForm.hasError('required','zipcode')">*zipcode is required</small>
       </div>
       <div class=" w-full text-white p-4 ">
-        <button class="rounded-md bg-gray-950 p-2" type="submit"> Submit</button>
+        <button (click)="handleSignUp()" class="rounded-md bg-gray-950 p-2" type="submit"> Submit</button>
       </div>
     </div>
   </form>
