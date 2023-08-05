@@ -23,6 +23,7 @@ export class LoginComponent {
   }
   
 private isLoggedIn = false;
+invalid= false;
   ngOnInit(){
     this.loginForm = this.formBuilder.group({
       username:['', Validators.required],
@@ -31,15 +32,14 @@ private isLoggedIn = false;
   }
   handleLogIn(){
     if(this.loginForm.valid){
-      //@TODO add logic for form handling the login
       this.auth.logIn(this.loginForm.value)
         .subscribe({
           next: (res: any) => {
-            alert(res.message)
+            this.auth.setLogin(true);
             this.router.navigate(['home']);
           },
           error: (err: any)=> {
-            alert(err.error.message)
+            this.invalid = true;
           }
         })
     }
