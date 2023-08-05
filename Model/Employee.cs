@@ -12,11 +12,13 @@ namespace EmployeePayroll.Model
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get; set; }
-
+        public string address1 { get; set; }
         public string city { get; set; }
         public string state { get; set; }
         public string zipcode { get; set; }
         public string Token { get; set; }
         public string Role { get; set; }
+        public float payRate { get; set; }
+
     }
 }

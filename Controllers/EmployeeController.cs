@@ -23,7 +23,7 @@ namespace EmployeePayroll.Controllers
             {
                 return BadRequest();
             }
-            var emp = await _authContext.employees.FirstOrDefaultAsync(x=> x.username == employeeObj.username && x.password == employeeObj.password);
+            var emp = await _authContext.employees.FirstOrDefaultAsync(x=> (x.email == employeeObj.email || x.username == employeeObj.username) && x.password == employeeObj.password);
             if (emp == null)
             {
                 return NotFound(new {Message = "User Not Found!"});
