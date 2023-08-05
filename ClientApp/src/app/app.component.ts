@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(private router: Router){}
  /*
   ngOnInit(){
     if(this.authService.isUserLoggedIn()){

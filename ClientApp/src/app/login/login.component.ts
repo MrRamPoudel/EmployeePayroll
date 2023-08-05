@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service'
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ import ValidateForm from '../common/validateForm';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private formBuilder: FormBuilder){
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router:Router){
   }
   loginForm!: FormGroup;
   eye = faEyeSlash;
@@ -32,6 +32,16 @@ private isLoggedIn = false;
   handleLogIn(){
     if(this.loginForm.valid){
       //@TODO add logic for form handling the login
+      this.auth.logIn(this.loginForm.value)
+        .subscribe({
+          next: (res: any) => {
+            alert(res.message)
+            this.router.navigate(['home']);
+          },
+          error: (err: any)=> {
+            alert(err.error.message)
+          }
+        })
     }
     else{
       ValidateForm.validateAllFields(this.loginForm);

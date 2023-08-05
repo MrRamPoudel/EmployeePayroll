@@ -14,12 +14,22 @@ builder.Services.AddSwaggerGen(config =>
         Url = "https://localhost:7009"
     });
 });
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("AllPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddDbContext<AppDBContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnStr"));
 });
 var app = builder.Build();
-app.UseCors(builder => builder.WithOrigins("*"));
+
 app.UseSwagger().UseSwaggerUI();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -30,9 +40,9 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllPolicy");
 app.UseStaticFiles();
 app.UseRouting();
-
 
 app.MapControllerRoute(
     name: "default",
