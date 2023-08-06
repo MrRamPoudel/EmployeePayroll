@@ -1,25 +1,38 @@
-<div class="flex bg-slate-400 gap-1 flex-col min-h-screen">
-<div class="bg-gray-200 mx-auto mt-10 mb-6 shadow-xl flex-1 w-3/4 rounded-md sm:max-h-24">
-    <div class="text-center py-2">
-        <h1>Clock In</h1>
-        <h1>7:10:43 PM</h1>
-        <button class="rounded-md px-2 py-1 bg-slate-900 text-white">PUNCH</button>
+<div class="md:px-64">
+    <div class="grid med:grid-cols-4 sm:grid-rows-1 gap-2 md:mt-36 py-2" >
+        <div class="col bg-slate-200 rounded-md ">
+            <h1 class="ml-7">My Time Off</h1>
+            <select id="countries" class="ml-7 mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="PTO">PTO</option>
+                <option value="CA">UPT</option>
+                <option value="FR">Leave</option>
+            </select>
+            <label for="" class="ml-7 w-3/4"> Dates</label>
+            <input class="dark:bg-gray-700 rounded-lg w-3/4 ml-7 mt-1 dark:text-white" type="date" id="start" name="trip-start" [value]="getDate()" [min]="getDate()"/>
+            <div class="flex">
+                <button type="submit" class="bg-gray-50 rounded-md p-1 w-3/4 ml-7 border-blue-400  border-2 mt-2 hover:bg-blue-400 mb-2">Submit</button>
+            </div>
+        </div>
+        <div class="col grid grid-cols-3 bg-slate-200 rounded-md">
+           <h1 class="col col-start-1 col-end-3 ml-7">My Notifications</h1>
+            <fa-icon [icon] = "verticalEllipsis" class="col col-start-3 text-right pr-2"></fa-icon>
+           
+        </div>
+        <div class="col bg-slate-200 rounded-md grid grid-cols-1">
+            <div class="col"> 
+                <h1 class="ml-7">Punch</h1>
+            </div>
+            <div class="col ">
+                <h1 class="text-xl border-2 border-red-600">
+                    {{getCurrentTime()}}
+                </h1>
+            </div>
+            <div class="col"></div>
+        </div>
+             <div class="col grid grid-cols-1 bg-slate-200 rounded-md">
+                <h1 class="col col-start-1 col-end-3 ml-7">My Time Card</h1>
+               </div>
     </div>
-</div>
-<div class=" w-3/4 h- 1/2 rounded-md bg-gray-200 mx-auto mb-6 shadow-2xl flex-1">
-    <h1 class="text-center">Pay Statement</h1>
-    <h3 class="px-1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, nostrum. Reiciendis quidem sunt nostrum et provident atque maxime. Tempora ratione excepturi vel reiciendis? Voluptatem enim tempore sit aspernatur tempora saepe ex ea laborum dignissimos, possimus ad voluptas non obcaecati, ipsum et consequatur voluptates hic adipisci rem!
-        Numquam, sunt ab debitis, aperiam ea culpa laborum aliquid, nam voluptatem dolorem quidem
-        optio sint eligendi quaerat esse tenetur sequi deserunt omnis tempora illum exercitationem.
-        Sint odit laboriosam recusandae, expedita porro eius inventore neque, maxime quis nesciunt
-        in minima aspernatur nobis, quos distinctio! Aliquid in consequatur, eum nulla voluptatibus
-        exercitationem fugit ducimus quae itaque nemo incidunt ipsum repudiandae similique, hic 
-        labore atque, quod omnis pariatur quos corporis odit illo consequuntur quis optio? Explicabo 
-        totam excepturi ab rerum, quasi aut modi vel! At est similique alias officia minus excepturi, 
-        eos tempore et beatae! Architecto debitis exercitationem praesentium, et hic ea, cum animi 
-        recusandae, provident quisquam odio corrupti odit officiis dolorem temporibus laudantium 
-        ipsam id aliquid. Nam rem molestiae doloremque magnam, dolore reiciendis voluptate 
-        necessitatibus. Tempore sunt officiis perspiciatis placeat nobis modi, distinctio vel 
-        repellendus totam eveniet voluptates rem sequi ipsa aliquid! Repellat, consectetur modi at 
-        incidunt eaque odit iste, ad quam quos deserunt maxime quasi!</h3></div>
+    
+
 </div>
