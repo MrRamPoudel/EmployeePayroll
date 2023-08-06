@@ -41,7 +41,9 @@ namespace EmployeePayroll.Controllers
             });
         }
         private string GenerateJWTToken(Employee employee){
+            //The token is made up of header, payload, and signature that is used to verify
             var jwtTokenHandler = new JwtSecurityTokenHandler();
+            //This neeeds to be atleast 256 bits >= 32 bytes
             var key = Encoding.ASCII.GetBytes("veryveryrandomssecretkey.........");
             var identity = new ClaimsIdentity(new Claim[]
             {

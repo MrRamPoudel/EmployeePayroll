@@ -35,7 +35,7 @@ invalid= false;
       this.auth.logIn(this.loginForm.value)
         .subscribe({
           next: (res: any) => {
-            this.auth.setLogin(true);
+            this.auth.storeToken(res.Token);
             this.router.navigate(['home']);
           },
           error: (err: any)=> {

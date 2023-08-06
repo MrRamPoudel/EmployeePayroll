@@ -12,10 +12,14 @@ export class AuthService {
   logIn(employeeObj:any) {
     return this.http.post<any>(`${this.url}authenticate`, employeeObj);
   }
-  setLogin(status:boolean){
-    this.isLoggedIn = status;
+  getLogin():boolean{
+    return !localStorage.getItem('jwttoken');
   }
-  getLogin(){
-    return this.isLoggedIn;
+  storeToken(tokenValue:string){
+    localStorage.setItem('jwttoken', tokenValue);
   }
+  getJWTToken(){
+    return localStorage.getItem('jwttoken');
+  }
+  
 }
