@@ -22,17 +22,18 @@
             <div class="col"> 
                 <h1 class="ml-7">Punch</h1>
             </div>
-            <div class="col ">
-                <h1 class="text-xl border-2 border-red-600">
-                    {{getCurrentTime()}}
+            <div class="col grid grid-cols-3">
+                <h1 class=" col col-start-2 col-end-2 row-end-1 text-xl shadow-sm m-auto text-center">
+                    {{time | date: 'hh:mm:ss a'}}
                 </h1>
+                
             </div>
-            <div class="col"></div>
+            <div class="col">
+                <button type="submit" class="bg-gray-50 rounded-md p-1 w-3/4 ml-7 border-blue-400  border-2 mt-2 hover:bg-blue-400 mb-2">Submit</button>
+            </div>
         </div>
              <div class="col grid grid-cols-1 bg-slate-200 rounded-md">
                 <h1 class="col col-start-1 col-end-3 ml-7">My Time Card</h1>
                </div>
     </div>
-    
-
 </div>

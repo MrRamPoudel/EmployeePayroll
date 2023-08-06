@@ -1,22 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { Subscription, timer } from 'rxjs';
+import {map, share} from "rxjs/operators";
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy{
+  time = new Date();
+  subscription: Subscription;
+
+  ngOnInit() {
+    // Using RxJS Timer
+    this.subscription = timer(0, 1000)
+      .pipe(
+        map(() => new Date()),
+        share()
+      )
+      .subscribe(time => {
+        let hour = this.time.getHours();
+        let minuts = this.time.getMinutes();
+        let seconds = this.time.getSeconds();
+        this.time = time;
+      });
+  }
   verticalEllipsis = faEllipsisVertical;
-  hours:number = 0;
-  minutes:number = 0;
-  seconds:number = 0;
   getDate():string{
    return new Date().toISOString().slice(0, 10);
   }
-  getCurrentTime(){
-    const today = new Date();
-    this.hours = today.getHours();
-    this.minutes = today.getMinutes();
-    this.seconds = today.getSeconds();
-    return this.hours + ':' + this.minutes + ':' + this.seconds;
+  ngOnDestroy(): void {
+      if(this.subscription){
+        this.subscription.unsubscribe();
+      }
   }
 }
