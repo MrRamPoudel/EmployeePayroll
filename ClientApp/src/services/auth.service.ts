@@ -13,13 +13,16 @@ export class AuthService {
     return this.http.post<any>(`${this.url}authenticate`, employeeObj);
   }
   getLogin():boolean{
-    return !localStorage.getItem('jwttoken');
+    return !!localStorage.getItem('jwttoken');
   }
   storeToken(tokenValue:string){
     localStorage.setItem('jwttoken', tokenValue);
   }
   getJWTToken(){
     return localStorage.getItem('jwttoken');
+  }
+  logOut(){
+    localStorage.clear();
   }
   
 }

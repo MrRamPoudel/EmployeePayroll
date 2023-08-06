@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import ValidateForm from '../common/validateForm';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private router:Router){
   }
