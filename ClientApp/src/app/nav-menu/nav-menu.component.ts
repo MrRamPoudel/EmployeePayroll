@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
+import { faSignOut, faBars, faBell, faHouse, faQuestion} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,6 +9,11 @@ import { AuthService } from 'src/services/auth.service';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+  houseIcon = faHouse;
+  signOutIcon = faSignOut;
+  barIcon = faBars;
+  bellIcon = faBell;
+  questionIcon = faQuestion;
   isExpanded = false;
   loggedIn = false;
   collapse() {

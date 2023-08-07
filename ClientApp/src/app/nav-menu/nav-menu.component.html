@@ -1,19 +1,23 @@
-<div>
-  <nav class="bg-gray-900">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between py-4">
-        <div>
-          <a href="#" class="text-white text-2xl font-bold">
-            Employee Login
-          </a>
-        </div>
-        <div class="hidden md:flex items-center">
-          <a routerLink="/home" routerLinkActive="active" class="text-gray-300 hover:text-white px-3">Home</a>
-          <a href="#" class="text-gray-300 hover:text-white px-4">About</a>
-          <a (click)="handleLogOut()" *ngIf= "isLoggedIn()" class="text-gray-300 hover:text-white px-4">Log out</a>
-        </div>
+<div class="bg-gray-800 p-4">
+  <div class="container mx-auto">
+    <nav class="flex items-center justify-between">
+      <!-- Left Side -->
+      <div class="flex space-x-4">
+        <div class="text-white"><fa-icon class="icon1" [icon]="barIcon"></fa-icon></div>
+        <div class="text-white"><fa-icon class="icon2" [icon]="houseIcon" ></fa-icon></div>
+        <div class="text-white"><fa-icon class="icon3" [icon]="questionIcon"></fa-icon></div>
       </div>
-    </div> 
-  </nav>
+
+      <!-- Middle Gap -->
+      <div class="flex-grow"></div>
+
+      <!-- Right Side -->
+      <div class="flex space-x-4">
+        <div class="text-white"><fa-icon class="icon5" (click) ="handleLogOut()" *ngIf= "isLoggedIn()" [icon]="signOutIcon"></fa-icon></div>
+        <div class="text-white"><fa-icon [icon] ="bellIcon"></fa-icon></div>
+      </div>
+    </nav>
+  </div>
 </div>
 <router-outlet></router-outlet>
+
