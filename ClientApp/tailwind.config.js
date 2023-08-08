@@ -8,6 +8,9 @@ module.exports = {
       },
       screens:{
         'med': '1470px'
+      },
+      colors:{
+        'whitish':'#f7f6f4'
       }
     },
   },

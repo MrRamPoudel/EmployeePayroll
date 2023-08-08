@@ -1,39 +1,31 @@
-<div class="md:px-64">
-    <div class="grid med:grid-cols-4 sm:grid-rows-1 gap-2 md:mt-36 py-2" >
-        <div class="col bg-slate-200 rounded-md ">
-            <h1 class="ml-7">My Time Off</h1>
-            <select id="countries" class="ml-7 mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="PTO">PTO</option>
-                <option value="CA">UPT</option>
-                <option value="FR">Leave</option>
-            </select>
-            <label for="" class="ml-7 w-3/4"> Dates</label>
-            <input class="dark:bg-gray-700 rounded-lg w-3/4 ml-7 mt-1 dark:text-white" type="date" id="start" name="trip-start" [value]="getDate()" [min]="getDate()"/>
-            <div class="flex">
-                <button type="submit" class="bg-gray-50 rounded-md p-1 w-3/4 ml-7 border-blue-400  border-2 mt-2 hover:bg-blue-400 mb-2">Submit</button>
-            </div>
-        </div>
-        <div class="col grid grid-cols-3 bg-slate-200 rounded-md">
-           <h1 class="col col-start-1 col-end-3 ml-7">My Notifications</h1>
-            <fa-icon [icon] = "verticalEllipsis" class="col col-start-3 text-right pr-2"></fa-icon>
-           
-        </div>
-        <div class="col bg-slate-200 rounded-md grid grid-cols-1">
-            <div class="col"> 
-                <h1 class="ml-7">Punch</h1>
-            </div>
-            <div class="col grid grid-cols-3">
-                <h1 class=" col col-start-2 col-end-2 row-end-1 text-xl shadow-sm m-auto text-center">
-                    {{time | date: 'hh:mm:ss a'}}
-                </h1>
-                
-            </div>
-            <div class="col">
-                <button type="submit" class="bg-gray-50 rounded-md p-1 w-3/4 ml-7 border-blue-400  border-2 mt-2 hover:bg-blue-400 mb-2">Submit</button>
-            </div>
-        </div>
-             <div class="col grid grid-cols-1 bg-slate-200 rounded-md">
-                <h1 class="col col-start-1 col-end-3 ml-7">My Time Card</h1>
-               </div>
+<div class="flex min-h-screen flex-wrap bg-gradient-to-t from-blue-800 to-whitish">
+    <div class="w-96 h-96 xl:ml-auto md:ml-10 md:mt-4 xl:mt-44 rounded-lg shadow-lg">
+        <h1 class="ml-7">My Time Off</h1>
+        <select id="countries" class="ml-7 mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="PTO">PTO</option>
+            <option value="CA">UPT</option>
+            <option value="FR">Leave</option>
+        </select>
+        <label for="" class="ml-7 w-3/4 block"> Dates</label>
+        <input class="dark:bg-gray-700 rounded-lg w-3/4 ml-7 mt-1 dark:text-white" type="date" id="start" name="trip-start" [value]="getDate()" [min]="getDate()"/>
+        <button type="submit" class="hover:bg-blue-950 rounded-md p-1 w-3/4 ml-7 border-blue-400  border-2 mt-10 bg-blue-400 mb-2">Submit</button>
     </div>
-</div>
+    <div class="w-96 h-96 xl:ml-auto md:ml-10 xl:mt-44 rounded-lg shadow-lg">
+      <h1 class="ml-7">Punch</h1>
+      <div>
+          <h1 class="text-xl  m-auto text-center mt-16">
+              {{time | date:'hh:mm:ss a'}}
+          </h1>
+      </div>
+      <button type="submit" class="bg-blue-400 rounded-md p-1 w-3/4 ml-7 border-blue-400 border-2 hover:bg-blue-950 mb-2 mt-10">Submit</button>
+    </div>
+     <div class="w-96 h-96 md:ml-auto xl:mt-44 md:mt-4 rounded-lg shadow-lg">
+        <div class="flex justify-between">
+            <h1 class="mx-3 mt-3">My Notifications</h1>
+            <fa-icon [icon] = "verticalEllipsis" class="mx-3 mt-3"></fa-icon>
+        </div>
+     </div>
+      <div class="w-96 h-96 md:ml-auto xl:mt-44 rounded-lg shadow-lg xl:mr-4">
+        <h1 class="mx-3 mt-3">My Time Card</h1>
+    </div>
+    </div>
