@@ -1,23 +1,20 @@
-<div class="bg-gray-800 p-4">
-  <div class="container mx-auto">
-    <nav class="flex items-center justify-between">
-      <!-- Left Side -->
-      <div class="flex space-x-4">
-        <div class="text-white"><fa-icon class="icon1" [icon]="barIcon"></fa-icon></div>
-        <div class="text-white"><fa-icon class="icon2" [icon]="houseIcon" ></fa-icon></div>
-        <div class="text-white"><fa-icon class="icon3" [icon]="questionIcon"></fa-icon></div>
-      </div>
-
-      <!-- Middle Gap -->
-      <div class="flex-grow"></div>
-
-      <!-- Right Side -->
-      <div class="flex space-x-4">
-        <div class="text-white"><fa-icon class="icon5" (click) ="handleLogOut()" *ngIf= "isLoggedIn()" [icon]="signOutIcon"></fa-icon></div>
-        <div class="text-white"><fa-icon [icon] ="bellIcon"></fa-icon></div>
-      </div>
-    </nav>
-  </div>
+<div class="flex justify-between bg-gray-800 p-3">
+    <div class="flex space-x-4">
+      <div class="text-white"><fa-icon class="icon1" [icon]="barIcon"></fa-icon></div>
+      <div class="text-white"><fa-icon class="icon2" [icon]="houseIcon" ></fa-icon></div>
+      <div class="text-white"><fa-icon class="icon3" [icon]="questionIcon"></fa-icon></div>
+    </div>
+    <div class="flex space-x-4">
+      <div class="text-white"><fa-icon class="icon5" (click) ="handleLogOut()" *ngIf= "isLoggedIn()" [icon]="signOutIcon"></fa-icon></div>
+      <div class="text-white"><fa-icon [icon] ="bellIcon"></fa-icon></div>
+    </div>
 </div>
+
 <router-outlet></router-outlet>
 
+
+
+<!-- Middle Gap -->
+<!--  <div class="flex-grow"></div> -->
+
+<!-- Right Side -->
