@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/services/auth.service';
+import { AuthService} from 'src/app/services/auth.service';
 import { faSignOut, faBars, faBell, faHouse, faQuestion} from '@fortawesome/free-solid-svg-icons'
 
 @Component({

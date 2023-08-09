@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { Subscription, timer } from 'rxjs';
 import {map, share} from "rxjs/operators";
+import { AuthService } from 'src/app/services/auth.service';
+import { UserinfoService } from '../services/userinfo.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ import {map, share} from "rxjs/operators";
 export class HomeComponent implements OnInit, OnDestroy{
   time = new Date();
   subscription: Subscription;
-
+  constructor(private userInfo: UserinfoService, private auth: AuthService){}
   ngOnInit() {
     // Using RxJS Timer
     this.subscription = timer(0, 1000)
@@ -33,5 +35,12 @@ export class HomeComponent implements OnInit, OnDestroy{
       if(this.subscription){
         this.subscription.unsubscribe();
       }
+  }
+  getFullName(){
+    console.log(this.auth.extractFullName());
+    return this.auth.extractFullName();
+  }
+  getInitials(){
+    return this.auth.getInitials();
   }
 }

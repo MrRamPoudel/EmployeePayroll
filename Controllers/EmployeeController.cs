@@ -36,7 +36,7 @@ namespace EmployeePayroll.Controllers
             emp.Token = GenerateJWTToken(emp);
             return Ok(new 
             {
-                Token = emp.Token,
+                token = emp.Token,
                 Message = "Login Success!" 
             });
         }
@@ -47,7 +47,7 @@ namespace EmployeePayroll.Controllers
             var key = Encoding.ASCII.GetBytes("veryveryrandomssecretkey.........");
             var identity = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.Name, $"{employee.firstName}{employee.lastName}")
+                new Claim(ClaimTypes.Name, $"{employee.firstName} {employee.lastName}")
             });
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha256);
             var tokenDescriptor = new SecurityTokenDescriptor

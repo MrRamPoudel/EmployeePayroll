@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service'
+import { AuthService } from 'src/app/services/auth.service'
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -37,7 +37,7 @@ invalid= false;
       this.auth.logIn(this.loginForm.value)
         .subscribe({
           next: (res: any) => {
-            this.auth.storeToken(res.Token);
+            this.auth.storeToken(res.token);
             this.router.navigate(['home']);
           },
           error: (err: any)=> {
