@@ -10,7 +10,7 @@ module.exports = {
         'med': '1470px'
       },
       colors:{
-        'whitish':'#f7f6f4',
+        'whitish':'#d7d2c8',
         'cool-blue':'#121c4f'
       },
       backgroundImage:{
