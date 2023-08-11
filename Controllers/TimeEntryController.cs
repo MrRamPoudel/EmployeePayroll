@@ -40,5 +40,20 @@ namespace EmployeePayroll.Controllers
 
             return Ok(new {Message = "Last punch:", Time = newEntry.PunchInTime.ToString()});
         }
+        [Authorize]
+        [HttpGet("punchEntry")]
+        public async Task<IActionResult> GetLastEntry()
+        {
+            int userId = int.Parse(User.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value);
+            TimeEntry LastEntry = await _dbContext.TimeEntries
+                .Where(e => e.EmployeeId == userId)
+                .OrderByDescending(e=> e.PunchInTime)
+                .FirstOrDefaultAsync();
+            if (LastEntry == null)
+            {
+                return NotFound();
+            }
+            return Ok(new {Time =  LastEntry.PunchInTime.ToString()});
+        }
     }
 }

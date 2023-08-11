@@ -11,6 +11,7 @@ import { UserinfoService } from '../services/userinfo.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit, OnDestroy{
+  entryDescription: string;
   time = new Date();
   subscription: Subscription;
   constructor(private userInfo: UserinfoService, private auth: AuthService, private apiService:ApiService){}
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy{
         let seconds = this.time.getSeconds();
         this.time = time;
       });
+    this.getLastEntry();
   }
   verticalEllipsis = faEllipsisVertical;
   getDate():string{
@@ -52,6 +54,14 @@ export class HomeComponent implements OnInit, OnDestroy{
         error => {
           console.error('Error creating time entry:', error);
         }
-      );
+    );
+    this.getLastEntry();
+  }
+  getLastEntry() {
+    this.apiService.getLastTimeEntry()
+      .subscribe((response: any) => {
+        console.log(response);
+        this.entryDescription = response.time;
+      })
   }
 }
