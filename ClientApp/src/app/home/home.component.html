@@ -34,12 +34,6 @@
         <h3 class="text-center mt-4">Last entry: {{entryDescription}}</h3>
         <button type="submit" (click)="onTimeSubmit()" class="bg-blue-400 rounded-md p-1 w-3/4 mx-auto border-blue-400 border-2 hover:bg-blue-950 mb-2 mt-8">Submit</button>
     </div>
-    <div class="w-96 h-96 md:ml-auto xl:mt-44 md:mt-4 rounded-lg shadow-lg bg-white relative">
-        <div class="flex justify-between">
-            <h1 class="mx-3 mt-3">My Notifications</h1>
-            <fa-icon [icon] = "verticalEllipsis" class="mx-3 mt-3"></fa-icon>
-        </div>
-    </div>
     <div class="w-96 h-96 md:ml-auto xl:mt-44 rounded-lg shadow-lg xl:mr-4 relative bg-white">
       <h1 class="mx-3 mt-3 ">Current Pay</h1>
       <div class="w-3/4 h-3/4 relative m-auto mt-2">
@@ -49,6 +43,12 @@
                 [type]="doughnutChartType">
         </canvas>
       </div>
+    </div>
+    <div class="w-96 h-96 md:ml-auto xl:mt-44 md:mt-4 rounded-lg shadow-lg bg-white relative">
+        <div class="flex justify-between">
+            <h1 class="mx-3 mt-3">My Notifications</h1>
+            <fa-icon [icon] = "verticalEllipsis" class="mx-3 mt-3"></fa-icon>
+        </div>
     </div>
 
     </div>
