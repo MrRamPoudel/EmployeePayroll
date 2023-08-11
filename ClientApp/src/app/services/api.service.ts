@@ -24,4 +24,7 @@ export class ApiService implements HttpInterceptor {
   getLastTimeEntry() {
     return this.http.get(`${ this.url }punchEntry`, {})
   }
+  getCurrentPay() {
+    return this.http.get(`${this.url}currentPay`, {})
+  }
 }

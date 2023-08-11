@@ -4,6 +4,7 @@ using EmployeePayroll.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeePayroll.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230811031924_v1")]
+    partial class v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,10 +83,10 @@ namespace EmployeePayroll.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<float>("HoursWorked")
+                    b.Property<float>("HoursWOrked")
                         .HasColumnType("real");
 
                     b.Property<float>("PayRate")
@@ -147,13 +150,9 @@ namespace EmployeePayroll.Migrations
 
             modelBuilder.Entity("EmployeePayroll.Model.Statement", b =>
                 {
-                    b.HasOne("EmployeePayroll.Model.Employee", "Employee")
+                    b.HasOne("EmployeePayroll.Model.Employee", null)
                         .WithMany("Statements")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
+                        .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("EmployeePayroll.Model.TimeEntry", b =>

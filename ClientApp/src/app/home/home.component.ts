@@ -11,6 +11,8 @@ import { UserinfoService } from '../services/userinfo.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit, OnDestroy{
+  grossPay: string;
+  taxedPay: string;
   entryDescription: string;
   time = new Date();
   subscription: Subscription;
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy{
         this.time = time;
       });
     this.getLastEntry();
+    this.getCurrentPay();
   }
   verticalEllipsis = faEllipsisVertical;
   getDate():string{
@@ -55,7 +58,7 @@ export class HomeComponent implements OnInit, OnDestroy{
           console.error('Error creating time entry:', error);
         }
     );
-    this.getLastEntry();
+    this.ngOnInit();
   }
   getLastEntry() {
     this.apiService.getLastTimeEntry()
@@ -63,5 +66,12 @@ export class HomeComponent implements OnInit, OnDestroy{
         console.log(response);
         this.entryDescription = response.time;
       })
+  }
+  getCurrentPay() {
+    this.apiService.getCurrentPay()
+      .subscribe((response: any) => {
+        this.grossPay = response.grossPay;
+        this.taxedPay = response.taxedPay;
+      }, error => { console.error(error) });
   }
 }

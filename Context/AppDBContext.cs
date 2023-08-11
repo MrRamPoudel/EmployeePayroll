@@ -22,6 +22,11 @@ namespace EmployeePayroll.Context
                 .WithOne(u => u.Employee)
                 .HasForeignKey<Employee>(e => e.UserId)
                 .IsRequired(false);
+
+            modelBuilder.Entity<Statement>()
+                .HasOne(s => s.Employee)
+                .WithMany(e => e.Statements)
+                .HasForeignKey(s => s.EmployeeId);
         }
     }
 }

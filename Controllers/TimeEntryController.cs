@@ -40,6 +40,7 @@ namespace EmployeePayroll.Controllers
 
             return Ok(new {Message = "Last punch:", Time = newEntry.PunchInTime.ToString()});
         }
+
         [Authorize]
         [HttpGet("punchEntry")]
         public async Task<IActionResult> GetLastEntry()
@@ -54,6 +55,37 @@ namespace EmployeePayroll.Controllers
                 return NotFound();
             }
             return Ok(new {Time =  LastEntry.PunchInTime.ToString()});
+        }
+
+        [Authorize]
+        [HttpGet("currentPay")]
+        public async Task<IActionResult> CurrentPayment() {
+            double TaxRate = 0.08;
+            double payRate = 0.0;
+            //Start counting time from 7 days ago
+            DateTime LastPaymentDate = DateTime.Now.AddDays(-7);
+            int userId = int.Parse(User.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value);
+            Statement statementInfo = await _dbContext.Statements.FirstOrDefaultAsync(e=> e.EmployeeId == userId);
+            //If there is no statement, it means employee is new and don't have old statement
+            if (statementInfo == null)
+            {
+                return Ok(new { GrossPay = 0.0, TaxedPay = 0.0 });
+            }
+            payRate = statementInfo.PayRate;
+            //Get all time entries for the user
+            List<TimeEntry> timeEntries = await _dbContext.TimeEntries
+                .Where(e => e.EmployeeId == userId && e.PunchInTime >= LastPaymentDate)
+                .OrderBy(e => e.PunchInTime).ToListAsync();
+            double totalHours = 0;
+            for(int i = 0; i<timeEntries.Count; i++)
+            {
+                if(i + 1 < timeEntries.Count)
+                {
+                    totalHours = (timeEntries[i + 1].PunchInTime - timeEntries[i].PunchInTime).TotalHours;
+                }
+            }
+            return Ok(new {GrossPay = totalHours*payRate, TaxedPay = totalHours * payRate * (1.0 -TaxRate)});
+     
         }
     }
 }
