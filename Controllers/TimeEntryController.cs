@@ -84,7 +84,7 @@ namespace EmployeePayroll.Controllers
                     totalHours = (timeEntries[i + 1].PunchInTime - timeEntries[i].PunchInTime).TotalHours;
                 }
             }
-            return Ok(new {GrossPay = totalHours*payRate, TaxedPay = totalHours * payRate * (1.0 -TaxRate)});
+            return Ok(new {GrossPay = (totalHours*payRate).ToString(), TaxedPay = (totalHours * payRate * (1.0 -TaxRate)).ToString()});
      
         }
     }

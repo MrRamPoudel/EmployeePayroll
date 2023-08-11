@@ -41,10 +41,14 @@
         </div>
     </div>
     <div class="w-96 h-96 md:ml-auto xl:mt-44 rounded-lg shadow-lg xl:mr-4 relative bg-white">
-        <h1 class="mx-3 mt-3">My Time Card</h1>
-        <h2>Current Pay</h2>
-         <h3>Gross pay: {{grossPay}} </h3>
-        <h3>Taxed pay: {{taxedPay}} </h3>
+      <h1 class="mx-3 mt-3 ">Current Pay</h1>
+      <div class="w-3/4 h-3/4 relative m-auto mt-2">
+        <canvas baseChart
+                class="chart w-full h-full"
+                [data]="doughnutChartData"
+                [type]="doughnutChartType">
+        </canvas>
+      </div>
     </div>
 
     </div>

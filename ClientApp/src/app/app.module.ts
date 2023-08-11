@@ -14,6 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { authGuard } from './auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiService } from './services/api.service';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -30,11 +31,12 @@ import { ApiService } from './services/api.service';
     FormsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    NgChartsModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      {path:'login', component:LoginComponent},
+      { path: 'login', component: LoginComponent },
       {path:'home', component:HomeComponent, canActivate:[authGuard]},
     ])
   ],
