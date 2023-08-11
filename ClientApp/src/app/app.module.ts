@@ -12,6 +12,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { authGuard } from './auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { authGuard } from './auth.guard';
       {path:'home', component:HomeComponent, canActivate:[authGuard]},
     ])
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass:ApiService, multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

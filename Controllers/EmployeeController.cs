@@ -8,6 +8,7 @@ using System.Text;
 using System;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
+using EmployeePayroll.Helpers;
 
 namespace EmployeePayroll.Controllers
 {
@@ -22,32 +23,33 @@ namespace EmployeePayroll.Controllers
             _authContext = appDBContext;
         }
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] Employee employeeObj)
+        public async Task<IActionResult> Authenticate([FromBody] User userObj)
         {
-            if(employeeObj == null)
+            if(userObj == null)
             {
                 return BadRequest();
             }
-            var emp = await _authContext.employees.FirstOrDefaultAsync(x=> (x.email == employeeObj.email || x.username == employeeObj.username) && x.password == employeeObj.password);
+            var emp = await _authContext.Users.Include(u=>u.Employee).FirstOrDefaultAsync(x=> (x.Username == userObj.Username) && x.Password == userObj.Password);
             if (emp == null)
             {
                 return NotFound(new {Message = "User Not Found!"});
             }
-            emp.Token = GenerateJWTToken(emp);
+            string token = Helper.GenerateJwtToken(emp);
             return Ok(new 
             {
-                token = emp.Token,
+                token = token,
                 Message = "Login Success!" 
             });
         }
-        private string GenerateJWTToken(Employee employee){
+        /*
+        private string GenerateJWTToken(User user){
             //The token is made up of header, payload, and signature that is used to verify
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             //This neeeds to be atleast 256 bits >= 32 bytes
             var key = Encoding.ASCII.GetBytes("veryveryrandomssecretkey.........");
             var identity = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.Name, $"{employee.firstName} {employee.lastName}")
+                new Claim(ClaimTypes.Name, $"{user.Employee.FirstName} {user.Employee.LastName}")
             });
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha256);
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -60,6 +62,7 @@ namespace EmployeePayroll.Controllers
 
             return jwtTokenHandler.WriteToken(token);
         }
+        */
     }
 
 }

@@ -5,20 +5,22 @@ namespace EmployeePayroll.Model
     public class Employee
     {
         [Key]
-        public int id { get; set; }
-
-        public string username { get;set; }
-        public string password { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public string address1 { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zipcode { get; set; }
+        public int Id { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required,EmailAddress]
+        public string Email { get; set; }
+        public string Address1 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zipcode { get; set; }
         public string Token { get; set; }
         public string Role { get; set; }
-        public float payRate { get; set; }
-
+        public int? UserId { get; set; }
+        public User User { get; set; }
+        public ICollection<Statement> Statements { get; set; } = new List<Statement>();
+        public ICollection<TimeEntry> TimeEntries { get; set; } = new List<TimeEntry>();
     }
 }
