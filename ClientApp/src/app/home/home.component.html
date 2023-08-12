@@ -1,5 +1,7 @@
+<!--@TODO ADD dark theme option-->
 <div class="flex bg-cool-blue ">
-    <div class="ml-20 relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-whitish rounded-full">
+    <div
+        class="ml-20 relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-whitish rounded-full">
         <span class="font-medium text-2xl text-amber-900">{{getInitials()}}</span>
     </div>
     <div class="flex">
@@ -8,48 +10,56 @@
 </div>
 <div class="flex min-h-screen flex-wrap relative overflow-hidden">
     <div class="flex">
-    <div class="absolute inset-0 bg-custom-gradient bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+        <!-- Background-->
+        <div
+            class="absolute inset-0 bg-custom-gradient bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]">
+        </div>
     </div>
+    <!--Cards, each are fixed size-->
     <div class="flex m-auto gap-16 flex-wrap sm:-translate-y-40">
-    <div class="w-96 h-96 xl:ml-auto md:ml-10 md:mt-4 xl:mt-44 rounded-lg shadow-lg relative bg-white">
+
+        <div class="w-96 h-96 xl:ml-auto md:ml-10 md:mt-4 xl:mt-44 rounded-lg shadow-lg relative bg-white">
             <h1 class="ml-7">My Time Off</h1>
             <select id="countries" class="ml-7 mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-             focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+             focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600
+              dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="PTO">PTO</option>
                 <option value="CA">UPT</option>
                 <option value="FR">Leave</option>
             </select>
             <label for="" class="ml-7 w-3/4 block p-2.5"> Dates</label>
-            <input class="dark:bg-gray-700 rounded-lg w-3/4 ml-7 mt-1 dark:text-white" type="date" id="start" name="trip-start" [value]="getDate()" [min]="getDate()"/>
-            <button type="submit" class="hover:bg-blue-950 rounded-md p-1 w-3/4 ml-7 border-blue-400  border-2 mt-10 bg-blue-400 mb-2">Submit</button>
-    </div>
-    <div class="flex flex-col w-96 h-96 xl:ml-auto md:ml-10 xl:mt-44 rounded-lg shadow-lg bg-white relative">
+            <input class="dark:bg-gray-700 rounded-lg w-3/4 ml-7 mt-1 dark:text-white" type="date" id="start"
+                name="trip-start" [value]="getDate()" [min]="getDate()" />
+            <button type="submit"
+                class="hover:bg-blue-950 rounded-md p-1 w-3/4 ml-7 border-blue-400  border-2 mt-10 bg-blue-400 mb-2">Submit</button>
+        </div>
+
+        <div class="flex flex-col w-96 h-96 xl:ml-auto md:ml-10 xl:mt-44 rounded-lg shadow-lg bg-white relative">
             <h1 class="ml-7">Punch</h1>
             <div>
                 <h1 class="text-xl  m-auto text-center mt-16">
                     {{time | date:'hh:mm:ss a'}}
                 </h1>
+            </div>
+            <h3 class="text-center mt-4">Last entry: {{entryDescription}}</h3>
+            <button type="submit" (click)="onTimeSubmit()"
+                class="bg-blue-400 rounded-md p-1 w-3/4 mx-auto border-blue-400 border-2 hover:bg-blue-950 mb-2 mt-8">Submit</button>
         </div>
-        <h3 class="text-center mt-4">Last entry: {{entryDescription}}</h3>
-        <button type="submit" (click)="onTimeSubmit()" class="bg-blue-400 rounded-md p-1 w-3/4 mx-auto border-blue-400 border-2 hover:bg-blue-950 mb-2 mt-8">Submit</button>
-    </div>
-    <div class="w-96 h-96 md:ml-auto xl:mt-44 rounded-lg shadow-lg xl:mr-4 relative bg-white">
-      <h1 class="mx-3 mt-3 ">Current Pay</h1>
-      <div class="w-3/4 h-3/4 relative m-auto mt-2">
-        <canvas baseChart
-                class="chart w-full h-full"
-                [data]="doughnutChartData"
-                [type]="doughnutChartType">
-        </canvas>
-      </div>
-    </div>
-    <div class="w-96 h-96 md:ml-auto xl:mt-44 md:mt-4 rounded-lg shadow-lg bg-white relative">
-        <div class="flex justify-between">
-            <h1 class="mx-3 mt-3">My Notifications</h1>
-            <fa-icon [icon] = "verticalEllipsis" class="mx-3 mt-3"></fa-icon>
+
+        <div class="w-96 h-96 md:ml-auto xl:mt-44 rounded-lg shadow-lg xl:mr-4 relative bg-white">
+            <h1 class="mx-3 mt-3 ">Current Pay</h1>
+            <div class="w-3/4 h-3/4 relative m-auto mt-2">
+                <canvas baseChart class="chart w-full h-full" [data]="doughnutChartData" [type]="doughnutChartType">
+                </canvas>
+            </div>
         </div>
-    </div>
+
+        <div class="w-96 h-96 md:ml-auto xl:mt-44 md:mt-4 rounded-lg shadow-lg bg-white relative">
+            <div class="flex justify-between">
+                <h1 class="mx-3 mt-3">My Notifications</h1>
+                <fa-icon [icon]="verticalEllipsis" class="mx-3 mt-3"></fa-icon>
+            </div>
+        </div>
 
     </div>
 </div>

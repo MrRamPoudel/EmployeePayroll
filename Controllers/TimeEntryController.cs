@@ -1,4 +1,8 @@
-﻿using EmployeePayroll.Context;
+﻿/*  TimeEntryController.cs
+    Contains the API related to time entry
+*/
+
+using EmployeePayroll.Context;
 using EmployeePayroll.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +21,7 @@ namespace EmployeePayroll.Controllers
         {
             _dbContext = dbContext;
         }
+        //Make api post request with the header, returns the time entered
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateTimeEntry()
@@ -37,7 +42,6 @@ namespace EmployeePayroll.Controllers
 
             await _dbContext.TimeEntries.AddAsync(newEntry);
             await _dbContext.SaveChangesAsync();
-
             return Ok(new {Message = "Last punch:", Time = newEntry.PunchInTime.ToString()});
         }
 
@@ -57,6 +61,7 @@ namespace EmployeePayroll.Controllers
             return Ok(new {Time =  LastEntry.PunchInTime.ToString()});
         }
 
+        //Calculates the pay for the last 7 days
         [Authorize]
         [HttpGet("currentPay")]
         public async Task<IActionResult> CurrentPayment() {

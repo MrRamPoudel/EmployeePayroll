@@ -8,6 +8,7 @@ namespace EmployeePayroll.Helpers
 {
     public class Helper
     {
+        //Function that generates JWT token with user id, first name, and last name
         public static string GenerateJwtToken(User user)
         {
             //The token is made up of header, payload, and signature that is used to verify
@@ -27,7 +28,6 @@ namespace EmployeePayroll.Helpers
                 SigningCredentials = credentials,
             };
             var token = jwtTokenHandler.CreateToken(tokenDescriptor);
-
             return jwtTokenHandler.WriteToken(token);
         }
     }
