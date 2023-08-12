@@ -96,5 +96,8 @@ export class HomeComponent implements OnInit, OnDestroy{
         },
         error: (e) => console.error(e)
       });
-    }
+  }
+  getCurrentStatement() {
+    this.apiService.getCurrentStatement();
+  }
 }

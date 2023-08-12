@@ -55,10 +55,18 @@
         </div>
 
         <div class="w-96 h-96 md:ml-auto xl:mt-44 md:mt-4 rounded-lg shadow-lg bg-white relative">
-            <div class="flex justify-between">
-                <h1 class="mx-3 mt-3">My Notifications</h1>
-                <fa-icon [icon]="verticalEllipsis" class="mx-3 mt-3"></fa-icon>
-            </div>
+          <div class="flex justify-between">
+            <h1 class="mx-3 mt-3">My Statements</h1>
+            <fa-icon [icon]="verticalEllipsis" class="mx-3 mt-3"></fa-icon>
+          </div>
+          <div class="text-center ">
+            <h1 class="mt-8">Download your current statement</h1>
+              <button type="submit" (click)="getCurrentStatement()"
+                      class="bg-blue-400 mx-auto rounded-md w-3/4 p-1 mt-2 border-blue-400 border-2 hover:bg-blue-950 mb-2 ">
+                Download
+              </button>
+
+          </div>
         </div>
 
     </div>

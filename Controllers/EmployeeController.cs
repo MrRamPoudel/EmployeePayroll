@@ -8,7 +8,6 @@ namespace EmployeePayroll.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   
     public class EmployeeController : ControllerBase
     {
         private readonly AppDBContext _authContext;
