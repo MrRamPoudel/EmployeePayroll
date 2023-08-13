@@ -19,7 +19,7 @@
     <div class="flex m-auto gap-16 flex-wrap sm:-translate-y-40">
 
         <div class="w-96 h-96 xl:ml-auto md:ml-10 md:mt-4 xl:mt-44 rounded-lg shadow-lg relative bg-white">
-            <h1 class="ml-7">My Time Off</h1>
+            <h1 class="mx-7 mt-3 ">My Time Off</h1>
             <select id="countries" class="ml-7 mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
              focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600
               dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -35,7 +35,7 @@
         </div>
 
         <div class="flex flex-col w-96 h-96 xl:ml-auto md:ml-10 xl:mt-44 rounded-lg shadow-lg bg-white relative">
-            <h1 class="ml-7">Punch</h1>
+            <h1 class="ml-7 mt-3">Punch</h1>
             <div>
                 <h1 class="text-xl  m-auto text-center mt-16">
                     {{time | date:'hh:mm:ss a'}}
@@ -59,7 +59,7 @@
             <h1 class="mx-3 mt-3">My Statements</h1>
             <fa-icon [icon]="verticalEllipsis" class="mx-3 mt-3"></fa-icon>
           </div>
-          <div class="text-center ">
+          <div class="text-center mt-28">
             <h1 class="mt-8">Download your current statement</h1>
               <button type="submit" (click)="getCurrentStatement()"
                       class="bg-blue-400 mx-auto rounded-md w-3/4 p-1 mt-2 border-blue-400 border-2 hover:bg-blue-950 mb-2 ">

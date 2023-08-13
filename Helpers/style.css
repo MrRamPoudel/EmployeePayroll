@@ -1,0 +1,39 @@
+﻿.container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem
+}
+.employee h1, h2{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.employee h2{
+    text-align:left;
+}
+
+.business h1, h2{
+    text-align: right;
+    margin-right: 2.5rem;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:4px;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+.font-md{
+    font-size: 12px;
+}
+.font-arial{
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -30,13 +30,25 @@ namespace EmployeePayroll.Controllers
             string htmlContent = $@"
                     <html>
                         <head>
-                              <link rel='stylesheet' type='text/css' href='../Helpers/style.css' />
+                              <link rel='stylesheet' type='text/css' href='C:\Users\poude\Employee\EmployeePayroll\Helpers\style.css' />
                         </head>
                         <body>
+                                <hr />
                                <div class ='container'> 
                                 <div class='employee' >
                                  <h1> {employee.FirstName} {employee.LastName} </h1>
                                   <h2> {employee.Email} </h2>
+                                  <div class='grid'>
+                                           <div class='grid'>
+                                            <h3 class='font-md font-arial'>Earnings </h3>
+                                             <h3 class='text-right font-md font-arial'>Rate </h3>
+                                           </div>
+                                             <div class='grid'>
+                                                <h3 class='font-md'> hours/unit </h3>
+                                                 <h3 class='text-right font-md font-arial'>this period </h3>
+                                           </div>
+                                    
+                                   </div>
                                 </div>
                                 <div class='business' >
                                     <h1> Employee Stub LLC </h2>
