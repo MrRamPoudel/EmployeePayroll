@@ -18,6 +18,7 @@ namespace EmployeePayroll.Controllers
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] User userObj)
         {
+            Console.WriteLine("Logging in");
             if(userObj == null)
             {
                 return BadRequest();

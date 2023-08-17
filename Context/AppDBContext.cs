@@ -1,5 +1,6 @@
 ﻿using EmployeePayroll.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace EmployeePayroll.Context
 {

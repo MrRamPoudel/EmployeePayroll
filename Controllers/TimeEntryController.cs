@@ -26,7 +26,6 @@ namespace EmployeePayroll.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTimeEntry()
         {
-            DateTime serverTime = DateTime.Now;
             int userId = int.Parse(User.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value);
             Employee employee = await _dbContext.Employees.FirstOrDefaultAsync(e => e.UserId == userId);
             if(employee == null)
@@ -37,12 +36,12 @@ namespace EmployeePayroll.Controllers
             TimeEntry newEntry = new TimeEntry
             {
                 EmployeeId = employee.Id,
-                PunchInTime = DateTime.Now
+                PunchInTime = DateTime.UtcNow
             };
 
             await _dbContext.TimeEntries.AddAsync(newEntry);
             await _dbContext.SaveChangesAsync();
-            return Ok(new {Message = "Last punch:", Time = newEntry.PunchInTime.ToString()});
+            return Ok(new {Message = "Last punch:", Time = newEntry.PunchInTime.ToString("O")});
         }
 
         [Authorize]
@@ -58,7 +57,7 @@ namespace EmployeePayroll.Controllers
             {
                 return NotFound();
             }
-            return Ok(new {Time =  LastEntry.PunchInTime.ToString()});
+            return Ok(new {Time =  LastEntry.PunchInTime.ToString("O")});
         }
 
         //Calculates the pay for the last 7 days
@@ -68,7 +67,7 @@ namespace EmployeePayroll.Controllers
             double TaxRate = 0.08;
             double payRate = 0.0;
             //Start counting time from 7 days ago
-            DateTime LastPaymentDate = DateTime.Now.AddDays(-7);
+            DateTime LastPaymentDate = DateTime.UtcNow.AddDays(-7);
             int userId = int.Parse(User.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value);
             Statement statementInfo = await _dbContext.Statements.FirstOrDefaultAsync(e=> e.EmployeeId == userId);
             //If there is no statement, it means employee is new and don't have old statement

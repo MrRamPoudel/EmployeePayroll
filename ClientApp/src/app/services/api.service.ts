@@ -20,7 +20,7 @@ export class ApiService implements HttpInterceptor {
     return next.handle(request);
   }
   createTimeEntry() {
-    return this.http.post(this.url, {});
+    return this.http.post(`${this.url}`, {});
   }
   getLastTimeEntry() {
     return this.http.get(`${ this.url }punchEntry`, {})

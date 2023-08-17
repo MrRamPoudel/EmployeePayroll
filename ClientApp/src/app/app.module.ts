@@ -15,7 +15,6 @@ import { authGuard } from './auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { NgChartsModule } from 'ng2-charts';
-
 @NgModule({
   declarations: [
     AppComponent,

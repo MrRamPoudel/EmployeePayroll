@@ -49,7 +49,6 @@ builder.Services.AddAuthentication(x =>
 });
 
 var app = builder.Build();
-
 app.UseSwagger().UseSwaggerUI();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

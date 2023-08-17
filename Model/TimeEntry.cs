@@ -10,8 +10,16 @@ namespace EmployeePayroll.Model
         public int EmployeeId { get; set; }
         [Required]
         public Employee Employee { get; set; }
+
+        private DateTime _punchInTime;
+
         [Required]
-        public DateTime PunchInTime { get; set; }
+        public DateTime PunchInTime
+        {
+            get => _punchInTime; 
+            //always save in Universal time
+            set => _punchInTime = value.Kind == DateTimeKind.Utc? value: value.ToUniversalTime();
+        }
 
     }
 }

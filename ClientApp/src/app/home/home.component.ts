@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy{
     verticalEllipsis = faEllipsisVertical;
     //Place holders
     grossPay = 1.0;
-    taxedPay: 1.0;
+    taxedAmount:number = 1.0;
     entryDescription: string;
     time = new Date();
     subscription: Subscription;
@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit, OnDestroy{
       this.getLastEntry();
       //updates the grossPay and taxedAmount
       this.getCurrentPay();
-
       this.doughnutChartLabels = [
         'Gross Income',
         'Taxed Amount',
@@ -67,6 +66,14 @@ export class HomeComponent implements OnInit, OnDestroy{
     //function to handle
     onTimeSubmit() {
         this.apiService.createTimeEntry()
+          .subscribe({
+            next: (response:any) => {
+              console.log(response);
+            },
+            error: (err:any) =>{
+              console.log(err);
+          }
+          });
         //update the last entry
         this.ngOnInit();
     }
@@ -74,7 +81,9 @@ export class HomeComponent implements OnInit, OnDestroy{
     getLastEntry() {
         this.apiService.getLastTimeEntry()
         .subscribe((response: any) => {
-            this.entryDescription = response.time;
+          console.log(response);
+            const utcDate = new Date(response.time);
+            this.entryDescription = utcDate.toLocaleString();
         })
     }
 
@@ -83,14 +92,15 @@ export class HomeComponent implements OnInit, OnDestroy{
         this.apiService.getCurrentPay()
         .subscribe({
         next: (response:any) =>{
+          console.log(response);
             this.grossPay = response.grossPay;
-            this.taxedPay = response.taxedPay;
+            this.taxedAmount = response.grossPay*.08;
 
             //Update the chartData with values returned from getCurrentPay()
             this.doughnutChartData = {
               labels: this.doughnutChartLabels,
               datasets: [
-                { data: [this.grossPay, (this.grossPay * 0.08)] },
+                { data: [this.grossPay, this.taxedAmount] },
               ],
             };
         },
