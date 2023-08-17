@@ -28,7 +28,7 @@ builder.Services.AddCors(option =>
 
 builder.Services.AddDbContext<AppDBContext>(option =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnStr"));
+    option.UseNpgsql(builder.Configuration.GetConnectionString("SqlServerConnStr"));
 });
 builder.Services.AddAuthentication(x =>
 {
