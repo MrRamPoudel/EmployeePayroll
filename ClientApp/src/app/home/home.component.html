@@ -27,8 +27,8 @@
                 <option value="CA">UPT</option>
                 <option value="FR">Leave</option>
             </select>
-            <label for="" class="ml-7 w-3/4 block p-2.5"> Dates</label>
-            <input class="dark:bg-gray-700 rounded-lg w-3/4 ml-7 mt-1 dark:text-white" type="date" id="start"
+            <label for="" class="ml-5 w-3/4 block p-2.5"> Dates</label>
+            <input class="mt-2 p-2 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-3/4 ml-7 dark:text-white" type="date" id="start"
                 name="trip-start" [value]="getDate()" [min]="getDate()" />
             <button type="submit"
                 class="hover:bg-blue-950 rounded-md p-1 w-3/4 ml-7 border-blue-400  border-2 mt-10 bg-blue-400 mb-2">Submit</button>
@@ -43,7 +43,7 @@
             </div>
             <h3 class="text-center mt-4 text-black">Last entry: {{entryDescription}}</h3>
             <button type="submit" (click)="onTimeSubmit()"
-                class="bg-blue-400 rounded-md p-1 w-3/4 mx-auto border-blue-400 border-2 hover:bg-blue-950 mb-2 mt-8">Submit</button>
+                class="bg-blue-400 rounded-md p-1 w-3/4 mx-auto border-blue-400 border-2 hover:bg-blue-950 mb-2 mt-12">Submit</button>
         </div>
 
         <div class="w-96 h-96 md:ml-auto xl:mt-44 rounded-lg shadow-lg xl:mr-4 relative bg-white">
@@ -62,7 +62,7 @@
           <div class="text-center mt-28">
             <h1 class="mt-8">Download your current statement</h1>
               <button type="submit" (click)="getCurrentStatement()"
-                      class="bg-blue-400 mx-auto rounded-md w-3/4 p-1 mt-2 border-blue-400 border-2 hover:bg-blue-950 mb-2 ">
+                      class="bg-blue-400 mx-auto rounded-md w-3/4 p-1 mt-10 border-blue-400 border-2 hover:bg-blue-950 mb-2 ">
                 Download
               </button>
 
