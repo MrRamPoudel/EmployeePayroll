@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import { ChartData, ChartType } from 'chart.js';
+import { ChartData, ChartType, ChartOptions } from 'chart.js';
 import { Subscription, timer } from 'rxjs';
 import {map, share} from "rxjs/operators";
 import { AuthService } from 'src/app/services/auth.service';
@@ -25,6 +25,16 @@ export class HomeComponent implements OnInit, OnDestroy{
     doughnutChartLabels: string[];
     doughnutChartData: ChartData<'doughnut'>;
     doughnutChartType: ChartType = 'doughnut';
+    doughnutChartOptions:ChartOptions = {
+    plugins: {
+      legend: {
+        display: true,
+        labels:{
+          color: 'black'
+        }
+      }
+    }
+  }
     constructor(private userInfo: UserinfoService, private auth: AuthService, private apiService:ApiService){}
     ngOnInit() {
       // Using RxJS Timer
@@ -44,6 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy{
         'Gross Income',
         'Taxed Amount',
       ];
+
     }
 
     getDate():string{
