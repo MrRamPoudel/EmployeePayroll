@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using EmployeePayroll.Helpers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -42,13 +44,16 @@ builder.Services.AddAuthentication(x =>
     {
         ValidateIssuerSigningKey = true,
         //Need to use more secure key
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("veryveryrandomssecretkey.........")),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("EncryptionKey"))),
         ValidateAudience = false,
         ValidateIssuer = false,
     };
 });
-
+//Pass configuration for dependency injection
+builder.Services.AddSingleton(provider => new Helper(builder.Configuration));
 var app = builder.Build();
+
+
 app.UseSwagger().UseSwaggerUI();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

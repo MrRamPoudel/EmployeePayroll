@@ -8,13 +8,19 @@ namespace EmployeePayroll.Helpers
 {
     public class Helper
     {
+        private readonly IConfiguration _configuration;
+
+        public Helper(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         //Function that generates JWT token with user id, first name, and last name
-        public static string GenerateJwtToken(User user)
+        public string GenerateJwtToken(User user)
         {
             //The token is made up of header, payload, and signature that is used to verify
             var jwtTokenHandler = new JwtSecurityTokenHandler();
-            //This neeeds to be atleast 256 bits >= 32 bytes
-            var key = Encoding.ASCII.GetBytes("veryveryrandomssecretkey.........");
+            //This needs to be atleast 256 bits >= 32 bytes
+            var key = Encoding.ASCII.GetBytes(_configuration["EncryptionKey"]!);
             var identity = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),

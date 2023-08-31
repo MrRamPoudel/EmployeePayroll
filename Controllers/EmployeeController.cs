@@ -11,9 +11,11 @@ namespace EmployeePayroll.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly AppDBContext _authContext;
-        public EmployeeController(AppDBContext appDBContext)
+        private readonly Helper _helper;
+        public EmployeeController(AppDBContext appDBContext, Helper helper)
         {
             _authContext = appDBContext;
+            _helper = helper;
         }
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] User userObj)
@@ -28,7 +30,7 @@ namespace EmployeePayroll.Controllers
             {
                 return NotFound(new {Message = "User Not Found!"});
             }
-            string token = Helper.GenerateJwtToken(emp);
+            string token = _helper.GenerateJwtToken(emp);
             return Ok(new 
             {
                 token = token,
