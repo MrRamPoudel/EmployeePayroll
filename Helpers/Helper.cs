@@ -19,7 +19,7 @@ namespace EmployeePayroll.Helpers
         {
             //The token is made up of header, payload, and signature that is used to verify
             var jwtTokenHandler = new JwtSecurityTokenHandler();
-            //This needs to be atleast 256 bits >= 32 bytes
+            //This needs to be at least 256 bits >= 32 bytes
             var key = Encoding.ASCII.GetBytes(_configuration["EncryptionKey"]!);
             var identity = new ClaimsIdentity(new Claim[]
             {
